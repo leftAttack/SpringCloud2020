@@ -1,0 +1,35 @@
+server:
+  port: 3366
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      #分支名称
+      label: master
+      #配置文件名称
+      name: config
+      #读取后缀名称
+      profile: dev
+      #配置中心地址
+      uri: http://localhost:3355 #http://localhost:3355/master/config-dev.yml
+  rabbitmq:
+    host: 123.56.56.237
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+
+#暴露所有监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+#curl -X POST "http://localhost:3355/actuator/refresh" 发送post请求来更新已经修改的配置文件

@@ -1,0 +1,21 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: cloud-order-consumer
+  zipkin:
+    base-url: http://localhost:9411
+    sleuth:
+      sampler:
+      probability: 1
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: cloud-consumer-order8002
+    prefer-ip-address: true
